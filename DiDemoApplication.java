@@ -1,6 +1,9 @@
 package com.datakettle.didemo;
 
+import com.datakettle.didemo.controllers.ConstructorInjectedController;
+import com.datakettle.didemo.controllers.GetterInjectedController;
 import com.datakettle.didemo.controllers.MyController;
+import com.datakettle.didemo.controllers.PropertyInjectedController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,6 +17,8 @@ public class DiDemoApplication {
 
 		MyController controller = (MyController) ctx.getBean("myController");
 
-		controller.hello();
+        System.out.println(ctx.getBean(PropertyInjectedController.class).sayHello());
+        System.out.println(ctx.getBean(GetterInjectedController.class).sayHello());
+        System.out.println(ctx.getBean(ConstructorInjectedController.class).sayHello());
 	}
 }
